@@ -1,8 +1,29 @@
 # fuseki-docker
-Docker image for Apache Jena's Fuseki SPARQL endpoint
+Docker image for Apache Jena's [Fuseki](https://jena.apache.org/documentation/fuseki2/) (v2) triplestore server
 
-Usage example:
+## Endpoints
 
-    docker run --rm atomgraph/fuseki --mem /ds
+In the following examples which use `/ds` as the dataset path, these main endpoints are available:
 
-Arguments after the image name (`atomgraph/fuseki`) become arguments to the [Fuseki server](https://jena.apache.org/documentation/fuseki2/fuseki-run.html#fuseki-standalone-server).
+* http://localhost:3030/ds/sparql for SPARQL Query
+* http://localhost:3030/ds/update for SPARQL Update
+* http://localhost:3030/ds/data for Graph Store (read-write)
+* http://localhost:3030/ds/get for Graph Store (read-only)
+
+They can be redefined in [configuration](https://jena.apache.org/documentation/fuseki2/fuseki-configuration.html#defining-the-service-name-and-endpoints-available).
+
+## Usage examples
+
+Empty memory dataset:
+
+    docker run --rm -p 3030:3030 atomgraph/fuseki --mem /ds
+
+Dataset from file `data.nt` (which is mounted as part of the current directory):
+
+    docker run --rm -p 3030:3030 -v $(pwd):/usr/share/data atomgraph/fuseki --file=/usr/share/data/data.nt /ds
+
+Help (all run options explained):
+
+    docker run --rm -p 3030:3030 atomgraph/fuseki --help
+
+Arguments after the image name (`atomgraph/fuseki`) become arguments to the [Fuseki server (no UI)](https://jena.apache.org/documentation/fuseki2/fuseki-run.html#fuseki-server). As the name explains, this server version _does not include the user interface_.
