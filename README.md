@@ -12,6 +12,8 @@ In the following examples which use `/ds` as the dataset path, these main endpoi
 
 They can be redefined in [configuration](https://jena.apache.org/documentation/fuseki2/fuseki-configuration.html#defining-the-service-name-and-endpoints-available).
 
+Post 3030 has to be [mapped](https://docs.docker.com/engine/reference/commandline/run/#publish-or-expose-port--p---expose) to be able to access it on the Docker host.
+
 ## Usage examples
 
 Empty memory dataset:
@@ -24,6 +26,6 @@ Dataset from file `data.nt` (which is mounted as part of the current directory):
 
 Help (all run options explained):
 
-    docker run --rm -p 3030:3030 atomgraph/fuseki --help
+    docker run --rm atomgraph/fuseki --help
 
 Arguments after the image name (`atomgraph/fuseki`) become arguments to the [Fuseki server (no UI)](https://jena.apache.org/documentation/fuseki2/fuseki-run.html#fuseki-server). As the name explains, this server version _does not include the user interface_.
