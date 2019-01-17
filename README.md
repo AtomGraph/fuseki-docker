@@ -14,7 +14,11 @@ They can be redefined in [configuration](https://jena.apache.org/documentation/f
 
 Post 3030 has to be [mapped](https://docs.docker.com/engine/reference/commandline/run/#publish-or-expose-port--p---expose) to be able to access it on the Docker host.
 
-## Usage examples
+## Usage
+
+Arguments after the image name (`atomgraph/fuseki`) become arguments to the [Fuseki server (no UI)](https://jena.apache.org/documentation/fuseki2/fuseki-run.html#fuseki-server). As the name explains, this server version _does not include the user interface_.
+
+### Examples
 
 Empty memory dataset:
 
@@ -27,5 +31,3 @@ Dataset from file `data.nt` (which is mounted as part of the current directory):
 Help (all run options explained):
 
     docker run --rm atomgraph/fuseki --help
-
-Arguments after the image name (`atomgraph/fuseki`) become arguments to the [Fuseki server (no UI)](https://jena.apache.org/documentation/fuseki2/fuseki-run.html#fuseki-server). As the name explains, this server version _does not include the user interface_.
