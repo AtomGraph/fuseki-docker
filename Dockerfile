@@ -7,7 +7,7 @@ FROM java:8-jdk
 
 LABEL maintainer="The Apache Jena community <users@jena.apache.org>"
 
-ARG VERSION=3.9.0
+ARG VERSION=3.13.0
 ARG SRC=http://central.maven.org/maven2/org/apache/jena/
 ARG BINARY=jena-fuseki-server/${VERSION}/jena-fuseki-server-${VERSION}.jar
 
