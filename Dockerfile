@@ -36,9 +36,10 @@ ARG LOG=$BASE/log
 ARG INIT_D=$BASE/init.d
 ENV INIT_D=$INIT_D
 
-RUN mkdir -p $BASE && \
-    mkdir -p $LOG  && \
-    mkdir -p $DATA && \
+RUN mkdir -p $BASE   && \
+    mkdir -p $DATA   && \
+    mkdir -p $LOG    && \
+    mkdir -p $INIT_D && \
     cd $BASE && \
     curl -s --show-error --output fuseki-server.jar $JAR_URL
 

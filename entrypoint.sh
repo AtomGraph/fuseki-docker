@@ -26,7 +26,10 @@ import_file()
     local endpoint="$2"
     local content_type="$3"
 
-    curl -s --show-error "${endpoint}" -d @"${filename}" -H "Content-Type: ${content_type}"
+    curl -f \
+        --data-binary @"${filename}" \
+        -H "Content-Type: ${content_type}" \
+        "${endpoint}"
 }
 
 process_init_files()
@@ -38,19 +41,19 @@ process_init_files()
     for f in "$dir"/*; do
         case "$f" in
         *.ttl)     echo "Importing $f"
-                   import_file "$f" "${endpoint}" "text/turtle" >/dev/null 2>&1
+                   import_file "$f" "${endpoint}" "text/turtle"
         ;;
         *.trig)    echo "Importing $f"
-                   import_file "$f" "${endpoint}" "application/trig" >/dev/null 2>&1
+                   import_file "$f" "${endpoint}" "application/trig"
         ;;
         *.nt)      echo "Importing $f"
-                   import_file "$f" "${endpoint}" "application/n-triples" >/dev/null 2>&1
+                   import_file "$f" "${endpoint}" "application/n-triples"
         ;;
         *.nq)      echo "Importing $f"
-                   import_file "$f" "${endpoint}" "application/n-quads" >/dev/null 2>&1
+                   import_file "$f" "${endpoint}" "application/n-quads"
         ;;
-        *.rdf)      echo "Importing $f"
-                   import_file "$f" "${endpoint}" "application/rdf+xml" >/dev/null 2>&1
+        *.rdf)     echo "Importing $f"
+                   import_file "$f" "${endpoint}" "application/rdf+xml"
         ;;
         *)         echo "Ignoring $f" ;;
         esac
@@ -60,13 +63,15 @@ process_init_files()
 
 # if TDB data dir is empty, launch a temporary server and import init files
 if [ -z "$(ls -A "$DATA")" ]; then
+    temp_port=3333
+
     echo "Starting temporary server"
-    exec java -jar -Dlog4j.configuration=file:"$BASE"/log4j.properties "$RUN"/fuseki-server.jar --port 3333 "$@" &
+    exec java -jar -Dlog4j.configuration=file:"$BASE"/log4j.properties "$RUN"/fuseki-server.jar --port "${temp_port}" "$@" &
     pid=$!
     echo "Temporary server started."
 
-    wait_for_url "http://localhost:3333/ds/" 10 "application/trig"
-    process_init_files "$INIT_D" http://localhost:3333/ds/
+    wait_for_url "http://localhost:${temp_port}/ds/" 10 "application/trig"
+    process_init_files "$INIT_D" http://localhost:${temp_port}/ds/
 
     echo "Stopping temporary server"
     kill $pid &>/dev/null
