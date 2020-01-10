@@ -36,6 +36,8 @@ ARG LOG=$BASE/log
 ARG INIT_D=$BASE/init.d
 ENV INIT_D=$INIT_D
 
+ENV TIMEOUT=10
+
 RUN mkdir -p $BASE   && \
     mkdir -p $DATA   && \
     mkdir -p $LOG    && \

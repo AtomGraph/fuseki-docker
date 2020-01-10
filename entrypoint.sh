@@ -70,7 +70,7 @@ if [ -z "$(ls -A "$DATA")" ]; then
     pid=$!
     echo "Temporary server started."
 
-    wait_for_url "http://localhost:${temp_port}/ds/" 10 "application/trig"
+    wait_for_url "http://localhost:${temp_port}/ds/" $TIMEOUT "application/trig"
     process_init_files "$INIT_D" http://localhost:${temp_port}/ds/
 
     echo "Stopping temporary server"
