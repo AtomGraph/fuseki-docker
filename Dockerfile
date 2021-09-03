@@ -7,7 +7,7 @@ FROM java:8-jdk
 
 LABEL maintainer="The Apache Jena community <users@jena.apache.org>"
 
-ARG VERSION=3.14.0
+ARG VERSION=3.16.0
 
 ENV URL=https://repository.apache.org/content/repositories/releases/org/apache/jena/jena-fuseki-server/${VERSION}/jena-fuseki-server-${VERSION}.jar
 ENV BASE=/mnt/apache-fuseki
