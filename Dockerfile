@@ -99,7 +99,8 @@ RUN \
     mkdir -p $LOGS && \
     mkdir -p $DATA && \
     chown -R fuseki ${FUSEKI_DIR} && \
-    chmod a+x entrypoint.sh 
+    chmod a+x entrypoint.sh && \
+    apk --no-cache add curl
 
 ## Default environment variables.
 ENV \
