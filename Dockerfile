@@ -19,7 +19,7 @@
 
 ARG OPENJDK_VERSION=14
 ARG ALPINE_VERSION=3.12.0
-ARG JENA_VERSION=""
+ARG JENA_VERSION=4.3.1
 
 # Internal, passed between stages.
 ARG FUSEKI_DIR=/fuseki
