@@ -17,7 +17,7 @@
 
 ## This Dockefile builds a reduced footprint container.
 
-ARG OPENJDK_VERSION=14
+ARG OPENJDK_VERSION=17
 ARG ALPINE_VERSION=3.12.0
 ARG JENA_VERSION=4.5.0
 
