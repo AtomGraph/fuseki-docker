@@ -18,7 +18,7 @@
 ## This Dockefile builds a reduced footprint container.
 
 ARG OPENJDK_VERSION=17
-ARG ALPINE_VERSION=3.12.0
+ARG ALPINE_VERSION=3.15.0
 ARG JENA_VERSION=4.5.0
 
 # Internal, passed between stages.
@@ -99,8 +99,7 @@ RUN \
     mkdir -p $LOGS && \
     mkdir -p $DATA && \
     chown -R fuseki ${FUSEKI_DIR} && \
-    chmod a+x entrypoint.sh && \
-    apk --no-cache add curl
+    chmod a+x entrypoint.sh 
 
 ## Default environment variables.
 ENV \
