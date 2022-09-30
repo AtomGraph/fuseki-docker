@@ -36,7 +36,7 @@ Help (all run options explained):
 
 Use `Dockerfile.profiler` to build the image instead of the default `Dockerfile`.
 
-Then append the following settings to the `JAVA_OPTIONS`:
+Then append the following settings to the `JAVA_OPTIONS` env variable:
 ```
 -Dcom.sun.management.jmxremote=true \
 -Djava.rmi.server.hostname=127.0.0.1 \
