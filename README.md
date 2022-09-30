@@ -46,6 +46,6 @@ Then append the following settings to the `JAVA_OPTIONS` env variable:
 -Dcom.sun.management.jmxremote.ssl=false \
 -Dcom.sun.management.jmxremote.registry.ssl=false \
 -Dcom.sun.management.jmxremote.authenticate=false \
--Djava.net.preferIPv4Stack=true`
+-Djava.net.preferIPv4Stack=true
 ```
 and use [VisualVM](https://visualvm.github.io/) to create a JMX connection to `127.0.0.1:9991`. Only tested with VisualVM running on Windows 10 and the remote Fuseki app running in a Docker container on WSL2.
