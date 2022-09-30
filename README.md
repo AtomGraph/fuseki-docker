@@ -31,3 +31,21 @@ Dataset from file `data.nt` (which is mounted as part of the current directory):
 Help (all run options explained):
 
     docker run --rm atomgraph/fuseki --help
+
+## Profiling
+
+Use `Dockerfile.profiler` to build the image instead of the default `Dockerfile`.
+
+Then append the following settings to the `JAVA_OPTIONS`:
+```
+-Dcom.sun.management.jmxremote=true \
+-Djava.rmi.server.hostname=127.0.0.1 \
+-Dcom.sun.management.jmxremote.host=0.0.0.0 \
+-Dcom.sun.management.jmxremote.port=9991 \
+-Dcom.sun.management.jmxremote.rmi.port=9991 \
+-Dcom.sun.management.jmxremote.ssl=false \
+-Dcom.sun.management.jmxremote.registry.ssl=false \
+-Dcom.sun.management.jmxremote.authenticate=false \
+-Djava.net.preferIPv4Stack=true`
+```
+and use [VisualVM](https://visualvm.github.io/) to create a JMX connection to `127.0.0.1:9991`. Only tested with VisualVM running on Windows 10 and the remote Fuseki app running in a Docker container on WSL2.
