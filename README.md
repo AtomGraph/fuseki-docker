@@ -16,7 +16,7 @@ Post 3030 has to be [mapped](https://docs.docker.com/engine/reference/commandlin
 
 ## Usage
 
-Arguments after the image name (`atomgraph/fuseki`) become arguments to the [Fuseki server (no UI)](https://jena.apache.org/documentation/fuseki2/fuseki-run.html#fuseki-server). As the name explains, this server version _does not include the user interface_.
+Arguments after the image name (`atomgraph/fuseki`) become arguments to the [Fuseki server (no UI)](https://jena.apache.org/documentation/fuseki2/fuseki-main.html). As the name explains, this server version _does not include the user interface_.
 
 ### Examples
 
