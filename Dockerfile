@@ -20,7 +20,7 @@
 ARG JAVA_VERSION=21
 
 ARG ALPINE_VERSION=3.17.1
-ARG JENA_VERSION=4.7.0
+ARG JENA_VERSION=6.1.0
 
 # Internal, passed between stages.
 ARG FUSEKI_DIR=/fuseki

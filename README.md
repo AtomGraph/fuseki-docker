@@ -1,5 +1,16 @@
 # fuseki-docker
-Docker image for Apache Jena's [Fuseki](https://jena.apache.org/documentation/fuseki2/) (v2) triplestore server
+Docker image for [Apache Jena Fuseki](https://jena.apache.org/documentation/fuseki2/) triplestore server.
+
+Currently based on Apache Jena Fuseki **6.1.0** (runs on Java 21).
+
+## Image tags
+
+Published to Docker Hub as [`atomgraph/fuseki`](https://hub.docker.com/r/atomgraph/fuseki):
+
+* `latest` — most recent release
+* `6.1.0` — exact version
+* `6.1` — latest minor
+* `6` — latest major
 
 ## Endpoints
 
