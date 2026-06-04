@@ -19,7 +19,7 @@
 
 ARG JAVA_VERSION=21
 
-ARG ALPINE_VERSION=3.17.1
+ARG ALPINE_VERSION=3.21.2
 ARG JENA_VERSION=6.1.0
 
 # Internal, passed between stages.
@@ -113,7 +113,7 @@ RUN \
 ## Default environment variables.
 ENV \
     JAVA_HOME=${JAVA_MINIMAL}           \
-    JAVA_OPTIONS="-Xmx2048m -Xms2048m"  \
+    JAVA_OPTIONS="-Xmx4096m -Xms4096m"  \
     JENA_VERSION=${JENA_VERSION}        \
     FUSEKI_JAR="${FUSEKI_JAR}"          \
     FUSEKI_DIR="${FUSEKI_DIR}"
